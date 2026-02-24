@@ -8,7 +8,7 @@ class ShellState:
     def __init__(self):
         self.executing = [True]  
         self.condition_met = [True]
-        self.functions = set()  # Track Bash functions to avoid "command not found"
+        self.functions = set()
         self.last_rc = 0
 
 state = ShellState()
@@ -248,7 +248,7 @@ def process_line(line, local_vars=None, background=False):
                 os.write(1, b"PASSED\n")
             else:
                 os.write(1, b"FAILED\n")
-                os.environ["result"] = "FAILED" # Update the script's tracking variable
+                os.environ["result"] = "FAILED"
             return
 
         # Ignore other defined Bash functions
